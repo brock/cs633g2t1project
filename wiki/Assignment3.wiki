@@ -1,0 +1,11 @@
+#Experimenting with using this as a Wiki
+(*_this is only a test document_*)
+
+= One of my tasks for this week is to look into an online wiki with the following features. =
+
+* Wysiwyg Editor preferred
+* Easy comparison of changes
+
+= Details =
+
+Several online options with free trial periods.
