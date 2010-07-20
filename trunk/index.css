@@ -1,0 +1,8 @@
+﻿
+table {font-family:arial; text-align: left; width: 50%; border: 3px black solid;border-collapse: collapse; margin-left: auto;
+margin-right: auto;}
+table.form {font-family:arial; text-align: left; width: 30%; border: 3px black solid;border-collapse: collapse; margin-left: auto;
+margin-right: auto;}
+caption {font-weight: bold; font-size: 20px; color:white; background-color: black ;border: 3px black solid}
+th {border: black solid; text-align: center}
+td {border: black solid}
