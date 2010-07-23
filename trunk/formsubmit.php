@@ -32,7 +32,7 @@ $password="test"; // Mysql password
 $db_name="cancermaps"; // Database name
 $tbl_name1="person"; // Table name #1
 $tbl_name2="address"; // Table name #2
-$tbl_name3="diagnosis2"; // Table name #3
+$tbl_name3="diagnosis"; // Table name #3
 $tbl_name4="illnesstype"; // Table name #4
 
 if (isset($_POST["submit"])) {
