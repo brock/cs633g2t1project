@@ -38,7 +38,7 @@
 <!-- Uses formvalidate.js for the validate() function -->
 <!-- Uses table.form in CSS to format table for form -->
 <!-- add.php handles form submission -->
-<form name="add_form" id="form1" action="formsubmit.php" enctype="text/plain" method="post" onsubmit="return validate();">
+<form id="form1" action="formsubmit.php" method="post">
 	<table class="formpage">
 		<caption>Add Point to Map</caption>
 		<tr>
@@ -87,7 +87,7 @@
 				</select>
 				</td>
 			</tr>
-			<td colspan="2"><input type="submit" value="submit" /> or go <a href="../">Back to Map</a></td>
+			<td colspan="2"><input type="submit" value="Submit" name="submit" /> or go <a href="../">Back to Map</a></td>
 		</tr>
 	</table>
 </form>

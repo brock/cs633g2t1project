@@ -101,6 +101,7 @@ if (isset($_POST["submit"])) {
 		$diagtype = $_POST["diagtype"];
 	}*/
 }
+//if (!($booFirstname + $booLastname + $booAddress+ $booCity + $booState + $booZip + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
 
 	echo "We are connecting to the database.";
