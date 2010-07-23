@@ -32,7 +32,7 @@ $password="test"; // Mysql password
 $db_name="cancermaps"; // Database name
 $tbl_name1="person"; // Table name #1
 $tbl_name2="address"; // Table name #2
-$tbl_name3="diagnosis"; // Table name #3
+$tbl_name3="diagnosis2"; // Table name #3
 $tbl_name4="illnesstype"; // Table name #4
 
 if (isset($_POST["submit"])) {
@@ -130,10 +130,10 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	//Insert data into IllnessType Table
 	$sql4="INSERT INTO $tbl_name4(illnesstype)VALUES('$diagtype')";
 	$result4=mysql_query($sql4);
-	$lastiemid3 = mysql_insert_id();
+	$lastitemid3 = mysql_insert_id();
 	
 	//Insert data into Diagnosis Table
-	$sql3="INSERT INTO $tbl_name3(personid, illnesstypeid)VALUES(,'1', '2',)";
+	$sql3="INSERT INTO $tbl_name3(personid, illnesstypeid, diagnosisdate)VALUES('$lastitemid2', '$lastitemid3', '$diagnosisdate')";
 	$result3=mysql_query($sql3);
 	
 	//test
