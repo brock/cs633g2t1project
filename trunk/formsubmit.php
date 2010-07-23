@@ -15,7 +15,6 @@
 </head>
 
 <body>
-<b>Thank you for your submission</b>
 <?php
 $booFirstname = 0;
 $booLastname = 0;
@@ -140,9 +139,6 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	
 	//Close connection
 	mysql_close();
-	}
-	else {
-	echo "We did not connect to the database.";
 	}
 	?>
 </body>
