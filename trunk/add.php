@@ -30,16 +30,7 @@
 <body>
 
 <!-- if this page is being loaded after the user submits new data, confirm it or show an error -->
-<?php 	
-	// If the user submitted something that JavaScript approved...
-	if($_SERVER['REQUEST_METHOD'] == "POST") {		
-			// send the request in for geocoding
-			// accept the geocoding results
-			// if good, show a nice update
-			echo "<center>You submitted something. But we aren't doing anything with it yet.</center>";
-			// if it fails, display the error message
-			}
-?>
+
 
 <!-- creates a buffer to center the add field on the page --> 
 <div id="head" style="width: 500px; height: 50px"></div>
@@ -47,31 +38,31 @@
 <!-- Uses formvalidate.js for the validate() function -->
 <!-- Uses table.form in CSS to format table for form -->
 <!-- add.php handles form submission -->
-<form name="add_form" id="form1" action="add.php" enctype="text/plain" method="post" onsubmit="return validate();">
+<form name="add_form" id="form1" action="formsubmit.php" enctype="text/plain" method="post" onsubmit="return validate();">
 	<table class="formpage">
 		<caption>Add Point to Map</caption>
 		<tr>
 			<td colspan=2 align=center><b>Personal Information</b></td>
 		<tr>
-			<td><b>First Name:</b></td> <td><input type="text" size="20" id="firstname"/></td>
+			<td><b>First Name:</b></td> <td><input type="text" size="20" name="firstname" id="firstname"/></td>
 		</tr>
 		<tr>
-			<td><b>Last Name:</b></td> <td><input type="text" size="20" id="lastname"/></td>
+			<td><b>Last Name:</b></td> <td><input type="text" size="20" name="lastname" id="lastname"/></td>
 		</tr>
 		<tr>
-			<td><b>Street Address:</b></td> <td><input type="text" size="30" id="address" /></td>
+			<td><b>Street Address:</b></td> <td><input type="text" size="30" name="address" id="address" /></td>
 		</tr>
 		<tr>
-			<td><b>City:</b></td> <td><input type="text" size="30" id="city" /></td>
+			<td><b>City:</b></td> <td><input type="text" size="30" name="city" id="city" /></td>
 		</tr>
 		<tr>
-			<td><b>State:(e.g. FL or Florida)</b></td> <td><input type="text" size="30" id="state" /></td>
+			<td><b>State:(e.g. FL or Florida)</b></td> <td><input type="text" size="30" name="state" id="state" /></td>
 		</tr>
 		<tr>
-			<td><b>Zip: XXXXX</b></td> <td><input type="text" size="5" id="zip" /></td>
+			<td><b>Zip: XXXXX</b></td> <td><input type="text" size="5" name="zip" id="zip" /></td>
 		</tr>
 		<tr>
-			<td><b>Email:</b></td> <td><input type="text" size="15" id="email" /></td>
+			<td><b>Email:</b></td> <td><input type="text" size="15" name="email" id="email" /></td>
 		</tr>
 		<tr>
 		<tr>
@@ -80,14 +71,13 @@
 		<tr>
 			<caption>Medical Information</caption>
 			<tr>
-				<td><b>Diagnosis Date:</b></td> <td><input type="text" size="15" id="diagdate" /></td>
+				<td><b>Diagnosis Date:</b></td> <td><input type="text" size="15" name ="diagdate" id="diagdate" /></td>
 			</tr>
 			<tr>
-				<!-- can this next line be removed? -->
-				<!-- <td><b>Diagnosis Date:</b></td> <td><input type="text" size="15" id="diagdate" /></td> -->
 				<td><b>Diagnosis Type:</b></td> 
 				<td>
-				<select name="diagtype">
+				<select name="diagtype" id="diagtype">
+				<option value="select">Select...</option>
 				<option value="lung">Lung Cancer</option>
 				<option value="breast">Breast Cancer</option>
 				<option value="leukemia">Leukemia</option>
