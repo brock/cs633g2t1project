@@ -133,7 +133,8 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	$lastitemid3 = mysql_insert_id();
 	
 	//Insert data into Diagnosis Table
-	$sql3="INSERT INTO $tbl_name3(personid, illnesstypeid, diagnosisdate)VALUES('$lastitemid2', '$lastitemid3', '$diagnosisdate')";
+	echo'$diagdate';
+	$sql3="INSERT INTO $tbl_name3(diagnosisdate, personid, illnesstypeid)VALUES('$diagdate', '$lastitemid2', '$lastitemid3')";
 	$result3=mysql_query($sql3);
 	
 	//test
