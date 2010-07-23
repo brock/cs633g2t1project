@@ -113,7 +113,7 @@ if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
 	//Insert data into MySQL
 	$sql="INSERT INTO $tbl_name(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
 	$result=mysql_query($sql);
-
+	//test
 	// if successfully insert data into database, displays message "Successful".
 		if($result){
 			echo "<Center><b>Thank you for your submission!</b>";
