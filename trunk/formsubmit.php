@@ -15,12 +15,11 @@
 </head>
 
 <body>
-
+<b>Thank you for your submission</b>
 <?php
+$booFirstname = 0;
+$booLastname = 0;
 $booEmail = 0;
-$booType = 0;
-$booRate = 0;
-$booComments = 0;
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username
@@ -46,7 +45,7 @@ if (isset($_POST["submit"])) {
 		$lastname = $_POST["lastname"];
 	}
 //address Field Validation
-	if($_POST["address"] == NULL) {
+/*	if($_POST["address"] == NULL) {
 		$booAddress = 1;
 		echo "<p>Please enter your Address</p>";
 	}
@@ -76,7 +75,7 @@ if (isset($_POST["submit"])) {
 	}
 	else {
 		$zip = $_POST["zip"];
-	}
+	}*/
 //email Field Validation
 	if($_POST["email"] == NULL) {
 		$booEmail = 1;
@@ -86,7 +85,7 @@ if (isset($_POST["submit"])) {
 		$email = $_POST["email"];
 	}
 //diagdate Field Validation
-	if($_POST["diagdate"] == NULL) {
+	/*if($_POST["diagdate"] == NULL) {
 		$booDiagdate = 1;
 		echo "<p>Please enter your Diagnosis Date</p>";
 	}
@@ -100,16 +99,16 @@ if (isset($_POST["submit"])) {
 	}
 	else {
 		$diagtype = $_POST["diagtype"];
-	}
+	}*/
 }
-if (!($booFirstname + $booLastname+ $booAddress+ $booCity + $booState + $booZip + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
-
+if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
+	
 // Connect to server and select database.
 mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 
 //Insert data into MySQL
-$sql="INSERT INTO $tbl_name(email, type, rate, comments)VALUES('$email', '$type', '$rate', '$comments')";
+$sql="INSERT INTO $tbl_name(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
 $result=mysql_query($sql);
 
 // if successfully insert data into database, displays message "Successful".
