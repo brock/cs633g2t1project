@@ -102,27 +102,32 @@ if (isset($_POST["submit"])) {
 	}*/
 }
 if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
-	
-// Connect to server and select database.
-mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
 
-//Insert data into MySQL
-$sql="INSERT INTO $tbl_name(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
-$result=mysql_query($sql);
+	echo "We are connecting to the database.";
+		
+	// Connect to server and select database.
+	mysql_connect("$host", "$username", "$password")or die("cannot connect");
+	mysql_select_db("$db_name")or die("cannot select DB");
 
-// if successfully insert data into database, displays message "Successful".
-	if($result){
-		echo "<Center><b>Thank you for your submission!</b>";
-		echo "<a href='index.html'>Back to main page</a>";
-}
-	else {
-		echo "ERROR";
+	//Insert data into MySQL
+	$sql="INSERT INTO $tbl_name(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
+	$result=mysql_query($sql);
+
+	// if successfully insert data into database, displays message "Successful".
+		if($result){
+			echo "<Center><b>Thank you for your submission!</b>";
+			echo "<a href='index.html'>Back to main page</a>";
 	}
+		else {
+			echo "ERROR";
+		}
 	
-//Close connection
-mysql_close();
-}
+	//Close connection
+	mysql_close();
+	}
+	else {
+	echo "We did not connect to the database.";
+	}
 	?>
 </body>
 </html>
