@@ -20,12 +20,21 @@
 $booFirstname = 0;
 $booLastname = 0;
 $booEmail = 0;
+$booAddress = 0;
+$booCity = 0;
+$booState = 0;
+$booZip = 0;
+$booDiagdate = 0;
+$booDiagtype = 0;
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password="test"; // Mysql password
 $db_name="cancermaps"; // Database name
-$tbl_name="person"; // Table name
+$tbl_name1="person"; // Table name #1
+$tbl_name2="address"; // Table name #2
+$tbl_name3="diagnosis"; // Table name #2
+$tbl_name4="illnesstype"; // Table name #2
 
 if (isset($_POST["submit"])) {
 //firstname Field Validation
@@ -45,7 +54,7 @@ if (isset($_POST["submit"])) {
 		$lastname = $_POST["lastname"];
 	}
 //address Field Validation
-/*	if($_POST["address"] == NULL) {
+	if($_POST["address"] == NULL) {
 		$booAddress = 1;
 		echo "<p>Please enter your Address</p>";
 	}
@@ -75,7 +84,7 @@ if (isset($_POST["submit"])) {
 	}
 	else {
 		$zip = $_POST["zip"];
-	}*/
+	}
 //email Field Validation
 	if($_POST["email"] == NULL) {
 		$booEmail = 1;
@@ -85,7 +94,7 @@ if (isset($_POST["submit"])) {
 		$email = $_POST["email"];
 	}
 //diagdate Field Validation
-	/*if($_POST["diagdate"] == NULL) {
+	if($_POST["diagdate"] == NULL) {
 		$booDiagdate = 1;
 		echo "<p>Please enter your Diagnosis Date</p>";
 	}
@@ -94,15 +103,15 @@ if (isset($_POST["submit"])) {
 	}
 //select box Validation
 	if($_POST["diagtype"] == "select") {
-		$booType = 1;
+		$booDiagtype = 1;
 	echo "<p>Please select you diagnosis type.</p>";
 	}
 	else {
 		$diagtype = $_POST["diagtype"];
-	}*/
+	}
 }
-//if (!($booFirstname + $booLastname + $booAddress+ $booCity + $booState + $booZip + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
-if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
+//if (!($booFirstname + $booLastname + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
+if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booState + $booZip + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 
 	echo "We are connecting to the database.";
 		
@@ -111,13 +120,19 @@ if (!($booFirstname + $booLastname + $booEmail) && isset($_POST["submit"])) {
 	mysql_select_db("$db_name")or die("cannot select DB");
 
 	//Insert data into MySQL
-	$sql="INSERT INTO $tbl_name(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
-	$result=mysql_query($sql);
+	$sql1="INSERT INTO $tbl_name1(firstname, lastname, email)VALUES('$firstname', '$lastname', '$email')";
+	$result1=mysql_query($sql1);
+	$sql2="INSERT INTO $tbl_name2(street1, city, state, zip)VALUES('$address', '$city', '$state', $zip)";
+	$result2=mysql_query($sql2);
+	$sql3="INSERT INTO $tbl_name3(diagnosisdate)VALUES('$diagdate')";
+	$result3=mysql_query($sql3);
+	$sql4="INSERT INTO $tbl_name4(illnesstype)VALUES('$diagtype')";
+	$result4=mysql_query($sql4);
 	//test
 	// if successfully insert data into database, displays message "Successful".
-		if($result){
+		if($result1 + $result2 + $result3 + $result4){
 			echo "<Center><b>Thank you for your submission!</b>";
-			echo "<a href='index.html'>Back to main page</a>";
+			echo "<a href='index.php'>Back to main page</a>";
 	}
 		else {
 			echo "ERROR";
