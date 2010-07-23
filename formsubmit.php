@@ -118,7 +118,7 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	mysql_select_db("$db_name")or die("cannot select DB");
 
 	//Insert data into Address Table
-	$sql2="INSERT INTO $tbl_name2(street1, city, state, zip)VALUES('$address', '$city', '$state', $zip)";
+	$sql2="INSERT INTO $tbl_name2(street1, city, state, zip)VALUES('$address', '$city', '$state', '$zip')";
 	$result2=mysql_query($sql2);
 	$lastitemid1 = mysql_insert_id();
 	
@@ -133,7 +133,6 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	$lastitemid3 = mysql_insert_id();
 	
 	//Insert data into Diagnosis Table
-	echo'$diagdate';
 	$sql3="INSERT INTO $tbl_name3(diagnosisdate, personid, illnesstypeid)VALUES('$diagdate', '$lastitemid2', '$lastitemid3')";
 	$result3=mysql_query($sql3);
 	
@@ -147,8 +146,11 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 			echo "ERROR";
 		}
 	
-	//Close connection
-	mysql_close();
+	// //Close connection
+	// "Using mysql_close() isn't usually necessary, as non-persistent open links are automatically closed at the end of the script's execution. See also freeing resources."
+	// this was causing apache to crash and is not necessary
+	// http://php.net/manual/en/function.mysql-close.php
+	// mysql_close();
 	}
 	?>
 </body>
