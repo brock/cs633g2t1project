@@ -79,10 +79,10 @@ if (isset($_POST["submit"])) {
 		$city = $_POST["city"];
 	}
 //state Field Validation
-	if($_POST["state"] == NULL) {
+	if($_POST["state"] == "select") {
 		$booState = 1;
 		echo "<p>Please enter your State</p>";
-	}
+	}	
 	else {
 		$state = $_POST["state"];
 	}
@@ -102,15 +102,34 @@ if (isset($_POST["submit"])) {
 	else {
 		$email = $_POST["email"];
 	}
-//diagdate Field Validation
-	if($_POST["diagdate"] == NULL) {
+//Month Fields Validation
+	if($_POST["month"] == "select") {
 		$booDiagdate = 1;
-		echo "<p>Please enter your Diagnosis Date</p>";
+		echo "<p>Please enter your Diagnosis Month</p>";
 	}
 	else {
-		$diagdate = $_POST["diagdate"];
+		$month = $_POST["month"];
 	}
-//select box Validation
+	//Day Fields Validation
+	if($_POST["day"] == "select") {
+		$booDiagdate = 1;
+		echo "<p>Please enter your Diagnosis Day</p>";
+	}
+	else {
+		$day = $_POST["day"];
+	}
+//Year Fields Validation
+	if($_POST["year"] == "select") {
+		$booDiagdate = 1;
+		echo "<p>Please enter your Diagnosis Year</p>";
+	}
+	else {
+		$year = $_POST["year"];
+	}
+if ($month + $day + $year) {
+	$diagdate = $year."-".$month."-".$day;
+	}
+//Diagnosis Type Validation
 	if($_POST["diagtype"] == "select") {
 		$booDiagtype = 1;
 	echo "<p>Please select you diagnosis type.</p>";
@@ -119,6 +138,63 @@ if (isset($_POST["submit"])) {
 		$diagtype = $_POST["diagtype"];
 	}
 }
+
+
+// the following php section was taken from here:
+// http://www.w3schools.com/php/func_filter_input_array.asp
+$filters = array
+  (
+	  "firstname" => array
+	    (
+	    "filter"=>FILTER_SANITIZE_STRING
+	    ),
+	  "lastname" => array
+	    (
+	    "filter"=>FILTER_SANITIZE_STRING
+	    ),
+	  "email"=> FILTER_VALIDATE_EMAIL,
+	  "address"=> array
+	  (
+	  "filter"=>FILTER_SANITIZE_STRING
+	  ),
+	  "zip" => array
+	  (
+	  // thanks : http://www.toves.org/books/php/ch12-regex/
+	  "filter"=>FILTER_VALIDATE_REGEXP,
+	  "options"=>array("regexp"=>"/^[0-9]{5}$/"),
+	  )
+  );
+$result = filter_input_array(INPUT_POST, $filters);
+print_r($result);
+
+if (!$result["firstname"])
+  {
+  echo("First Name is not valid.<br />");
+  }
+elseif(!$result["lastname"])
+  {
+  echo("Last Name is not valid.<br />");
+  }
+elseif(!$result["address"])
+  {
+  echo("Address is not valid.<br />");
+  }
+elseif(!$result["zip"])
+  {
+  echo("Zip code is not valid.<br />");
+  }
+elseif(!$result["email"])
+  {
+  echo("E-Mail is not valid.<br />");
+  }
+else
+  {
+  echo("User input is valid");
+  }
+  
+// end of sample code from here: http://www.w3schools.com/php/func_filter_input_array.asp
+
+
 //if (!($booFirstname + $booLastname + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booState + $booZip + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 
