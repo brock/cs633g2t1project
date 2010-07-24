@@ -78,12 +78,12 @@
 				<td>
 				<select name="diagtype" id="diagtype">
 				<option value="select">Select...</option>
-				<option value="lung">Lung Cancer</option>
-				<option value="breast">Breast Cancer</option>
-				<option value="leukemia">Leukemia</option>
-				<option value="hodgkins">Hodgkins</option>
-				<option value="non-hodgkins">non-Hodgkins</option>
-				<option value="colon">Colon Cancer</option>
+				<option value="Lung Cancer">Lung Cancer</option>
+				<option value="Breast Cancer">Breast Cancer</option>
+				<option value="Leukemia">Leukemia</option>
+				<option value="Hodgkins">Hodgkins</option>
+				<option value="Non-Hodgkins">Non-Hodgkins</option>
+				<option value="Colon Cancer">Colon Cancer</option>
 				</select>
 				</td>
 			</tr>

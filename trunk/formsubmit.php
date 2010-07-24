@@ -16,6 +16,9 @@
 
 <body>
 <?php
+// for some reason, when I used "require" instead of "include" this wouldn't work.
+include("dbinfo.php");
+
 $booFirstname = 0;
 $booLastname = 0;
 $booEmail = 0;
@@ -30,10 +33,12 @@ global $address;
 global $city;
 global $state;
 global $zip;
+global $lat;
+global $lng;
 
 $host="localhost"; // Host name
-$username="root"; // Mysql username
-$password="test"; // Mysql password
+// $username="root"; // Mysql username
+// $password="test"; // Mysql password
 $db_name="cancermaps"; // Database name
 $tbl_name1="person"; // Table name #1
 $tbl_name2="address"; // Table name #2
@@ -117,40 +122,49 @@ if (isset($_POST["submit"])) {
 //if (!($booFirstname + $booLastname + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booState + $booZip + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 
+	// attempt to geocode the address
 	include ("./geocode.php");
+	
+	// if the geocode was successful, it will return status of 200. If so, proceed
+	if($status == 200) {
+		// Connect to server and select database.
+		mysql_connect($host, $username, $password)or die("cannot connect");
+		mysql_select_db($db_name)or die("cannot select DB");
 
-	// Connect to server and select database.
-	mysql_connect("$host", "$username", "$password")or die("cannot connect");
-	mysql_select_db("$db_name")or die("cannot select DB");
-
-	//Insert data into Address Table
-	$sql2="INSERT INTO $tbl_name2(street1, city, state, zip)VALUES('$address', '$city', '$state', '$zip')";
-	$result2=mysql_query($sql2);
-	$lastitemid1 = mysql_insert_id();
-	
-	//Insert data into Person Table
-	$sql1="INSERT INTO $tbl_name1(firstname, lastname, email, addressid)VALUES('$firstname', '$lastname', '$email', '$lastitemid1')";
-	$result1=mysql_query($sql1);
-	$lastitemid2 = mysql_insert_id();
-	
-	//Insert data into IllnessType Table
-	$sql4="INSERT INTO $tbl_name4(illnesstype)VALUES('$diagtype')";
-	$result4=mysql_query($sql4);
-	$lastitemid3 = mysql_insert_id();
-	
-	//Insert data into Diagnosis Table
-	$sql3="INSERT INTO $tbl_name3(diagnosisdate, personid, illnesstypeid)VALUES('$diagdate', '$lastitemid2', '$lastitemid3')";
-	$result3=mysql_query($sql3);
-	
-	//test
-	// if successfully insert data into database, displays message "Successful".
-		if($result1 + $result2 + $result3 + $result4){
-			echo "<Center><b>Thank you for your submission!</b>";
-			echo "<a href='index.php'>Back to main page</a>";
-	}
-		else {
-			echo "ERROR";
+		//Insert data into Address Table
+		$sql2="INSERT INTO $tbl_name2(lat, lng, street1, city, state, zip)VALUES('$lat', '$lng', '$address', '$city', '$state', '$zip')";
+		$result2=mysql_query($sql2);
+		$lastitemid1 = mysql_insert_id();
+		
+		//Insert data into Person Table
+		$sql1="INSERT INTO $tbl_name1(firstname, lastname, email, addressid)VALUES('$firstname', '$lastname', '$email', '$lastitemid1')";
+		$result1=mysql_query($sql1);
+		$lastitemid2 = mysql_insert_id();
+		
+		//Insert data into IllnessType Table
+		$sql4="INSERT INTO $tbl_name4(illnesstype)VALUES('$diagtype')";
+		$result4=mysql_query($sql4);
+		$lastitemid3 = mysql_insert_id();
+		
+		//Insert data into Diagnosis Table
+		$sql3="INSERT INTO $tbl_name3(diagnosisdate, personid, illnesstypeid)VALUES('$diagdate', '$lastitemid2', '$lastitemid3')";
+		$result3=mysql_query($sql3);
+		
+		//test
+		// if successfully insert data into database, displays message "Successful".
+			if($result1 + $result2 + $result3 + $result4){
+				echo "<br /><Center><b>Thank you for your submission!</b>";
+				echo "<a href='index.php'>Back to main page</a>";
 		}
+	// if it didn't successfully submit to the database
+	else {
+		echo "ERROR";
+		}
+	}
+	// if the geocoding wasn't successful
+	else {
+		echo "<br />The address you entered did not return a real result.<br />";
+	}
 	
 	// //Close connection
 	// "Using mysql_close() isn't usually necessary, as non-persistent open links are automatically closed at the end of the script's execution. See also freeing resources."
