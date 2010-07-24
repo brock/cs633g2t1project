@@ -34,4 +34,5 @@ if (strcmp($status, "200") == 0) {
 	echo "The latitude is: " . $lat . "\n";	
 	echo "The longitude is: " . $lng . "\n";
 }
+return ($status);
 ?>
