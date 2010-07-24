@@ -1,14 +1,18 @@
 <?php
 define("MAPS_HOST", "maps.google.com");
 
+
 //this is a my own personal key
 define("KEY", "ABQIAAAAR3CaSE2qqeWGkC56FEsbQRTPbgwNZ2RKRODPuAlSED3BkqR1ExT5er_UOINhI1C2R3cVPWZmbVNDAw");
 
 $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 
 //my address
-$address = "8730 Costa Verde Blvd San Diego, CA";
-$request_url = $base_url . "&q=" . urlencode($address);
+// $address = "8730 Costa Verde Blvd San Diego, CA";
+$fullAddress = $address." ".$city.", ".$state;
+echo "Full address is $fullAddress<br />";
+
+$request_url = $base_url . "&q=" . urlencode($fullAddress);
 
 //xml request
 $xml = simplexml_load_file($request_url) or die("url not loading");

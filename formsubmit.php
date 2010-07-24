@@ -26,6 +26,11 @@ $booZip = 0;
 $booDiagdate = 0;
 $booDiagtype = 0;
 
+global $address;
+global $city;
+global $state;
+global $zip;
+
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password="test"; // Mysql password
@@ -112,7 +117,8 @@ if (isset($_POST["submit"])) {
 //if (!($booFirstname + $booLastname + $booEmail + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booState + $booZip + $booDiagdate + $booDiagtype) && isset($_POST["submit"])) {
 
-		
+	include ("./geocode.php");
+
 	// Connect to server and select database.
 	mysql_connect("$host", "$username", "$password")or die("cannot connect");
 	mysql_select_db("$db_name")or die("cannot select DB");
