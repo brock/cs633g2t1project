@@ -132,7 +132,7 @@ if ($month + $day + $year) {
 //Diagnosis Type Validation
 	if($_POST["diagtype"] == "select") {
 		$booDiagtype = 1;
-	echo "<p>Please select you diagnosis type.</p>";
+	echo "<p>Please select your diagnosis type.</p>";
 	}
 	else {
 		$diagtype = $_POST["diagtype"];
