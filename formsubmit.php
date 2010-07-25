@@ -238,7 +238,7 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 		//test
 		// if successfully insert data into database, displays message "Successful".
 			if($result1 + $result2 + $result3 + $result4){
-				echo "<br /><br /><b>Thank you for your submission!</b>";
+				echo "<br /><br /><b>Thank you for your submission!</b><br />";
 				echo "<a href='index.php'>Back to main page</a>";
 		}
 	// if it didn't successfully submit to the database
