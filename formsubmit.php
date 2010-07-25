@@ -157,6 +157,10 @@ $filters = array
 	  (
 	  "filter"=>FILTER_SANITIZE_STRING
 	  ),
+	  "city"=> array
+	  (
+	  "filter"=>FILTER_SANITIZE_STRING
+	  ),
 	  "zip" => array
 	  (
 	  // thanks : http://www.toves.org/books/php/ch12-regex/
@@ -178,6 +182,10 @@ elseif(!$result["lastname"])
 elseif(!$result["address"])
   {
   echo("Address is not valid.<br />");
+  }
+elseif(!$result["city"])
+  {
+  echo("is not valid.<br />");
   }
 elseif(!$result["zip"])
   {

@@ -69,7 +69,8 @@
     function load() { 
       if (GBrowserIsCompatible()) { 
         var map = new GMap2(document.getElementById("map")); 
-        map.addControl(new GSmallMapControl()); 
+        map.enableScrollWheelZoom()
+		map.addControl(new GLargeMapControl3D()); 
         map.addControl(new GMapTypeControl()); 
         map.setCenter(new GLatLng(40.0, -98.0), 3); 
  
@@ -109,7 +110,7 @@
 		<div id="head" style="width: 500px; height: 50px"><h2>Cancer Maps</h2></div>
 	
 	<!-- display the map -->
-		<div id="map" style="width: 500px; height: 300px"></div> 
+		<div id="map" style="width: 600px; height: 400px"></div> 
 	
 	<!-- display text under the map - we could use this to provide navigation controls perhaps -->	
 		<div id="underMap" style="width: 500px; height: 300px;">
