@@ -169,7 +169,8 @@ $filters = array
 	  )
   );
 $result = filter_input_array(INPUT_POST, $filters);
-print_r($result);
+// Use this to display the array of all items submitted
+// print_r($result);
 
 if (!$result["firstname"])
   {
@@ -197,7 +198,7 @@ elseif(!$result["email"])
   }
 else
   {
-  echo("User input is valid");
+  //echo("User input is valid");
   }
   
 // end of sample code from here: http://www.w3schools.com/php/func_filter_input_array.asp
@@ -237,12 +238,12 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 		//test
 		// if successfully insert data into database, displays message "Successful".
 			if($result1 + $result2 + $result3 + $result4){
-				echo "<br /><Center><b>Thank you for your submission!</b>";
+				echo "<br /><br /><b>Thank you for your submission!</b>";
 				echo "<a href='index.php'>Back to main page</a>";
 		}
 	// if it didn't successfully submit to the database
 	else {
-		echo "ERROR";
+		echo "We could not submit your information to the database.";
 		}
 	}
 	// if the geocoding wasn't successful
