@@ -22,6 +22,9 @@
 		<!-- Style sheet definition -->
 		<link href="index.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="formvalidate.js"></script>
+		
+		<!-- remove after testing -->
+		<script type="text/javascript" src="test-data.js"></script>
 		<title>
 			Add Point to Cancer Maps
 		</title>
@@ -38,7 +41,7 @@
 <!-- Uses formvalidate.js for the validate() function -->
 <!-- Uses table.form in CSS to format table for form -->
 <!-- add.php handles form submission -->
-<form id="form1" action="formsubmit.php" method="post" onsubmit="return validate();";>
+<form id="form1" action="formsubmit.php" method="post" onsubmit="return validate();">
 	<table class="formpage">
 		<caption>Add Point to Map</caption>
 		<tr>
@@ -149,7 +152,7 @@
 			<tr>
 				<td><b>Diagnosis Date:</b></td> <td>
 				<!-- thanks: http://www.glodev.com/script_view.php?ScriptID=29 -->
-				<select name="month">
+				<select name="month" id="month">
 					<option value="1">January
 					<option value="2">February
 					<option value="3">March
@@ -163,7 +166,7 @@
 					<option value="11">November
 					<option value="12">December
 				</select>
-				<select name="day">
+				<select name="day" id="day">
 					<option value="1">1
 					<option value="2">2
 					<option value="3">3
@@ -196,7 +199,7 @@
 					<option value="30">30
 					<option value="31">31
 				</select>
-				<select name="year">
+				<select name="year" id="year">
 					<option value="1900">1900
 					<option value="1901">1901
 					<option value="1902">1902
@@ -329,6 +332,8 @@
 	</table>
 </form>
 
+<!-- remove after testing -->
+<?php include('test-inserts.php'); ?>
 
 </body>
 </html>
