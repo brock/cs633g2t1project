@@ -4,7 +4,7 @@
   <head> 
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/> 
     <title>Cancer Maps</title> 
-    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxTPZYElJSBeBUeMSX5xXgq6lLjHthSAk20WnZ_iuuzhMt60X_ukms-AUg" 
+    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA9UlnCkwzUPP9TWw8ZaakmhTZCY_DCTthKCNyVoucAIe6NKjfYRSKWufBwOoqSoeQE1sDjXY1znSeIA" 
             type="text/javascript"></script> 
  
     <script type="text/javascript"> 
