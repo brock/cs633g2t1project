@@ -2,8 +2,8 @@
 define("MAPS_HOST", "maps.google.com");
 
 
-//this is a my own personal key
-define("KEY", "ABQIAAAAR3CaSE2qqeWGkC56FEsbQRTPbgwNZ2RKRODPuAlSED3BkqR1ExT5er_UOINhI1C2R3cVPWZmbVNDAw");
+//this is the cancermaps.org key
+define("KEY", "ABQIAAAA9UlnCkwzUPP9TWw8ZaakmhTZCY_DCTthKCNyVoucAIe6NKjfYRSKWufBwOoqSoeQE1sDjXY1znSeIA");
 
 $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 

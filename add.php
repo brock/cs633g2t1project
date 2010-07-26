@@ -335,5 +335,11 @@
 <!-- remove after testing -->
 <?php include('test-inserts.php'); ?>
 
+<br />
+	<center>
+		<h3>Data added before September 2010 will not be retained.</h3>
+	</center>
+<br />
+
 </body>
 </html>

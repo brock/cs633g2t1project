@@ -9,7 +9,7 @@
 <!-- JavaScript -->
 <script type="text/javascript" src="rollover.js">
 </script>
-<title>Group 2.1 -- Assignment 3</title>
+<title>Submit Point to Cancer Maps</title>
 
 
 </head>
