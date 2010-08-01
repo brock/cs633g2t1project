@@ -28,10 +28,7 @@ if (strcmp($status, "200") == 0) {
 	// Format: Longitude, Latitude, Altitude
 	$lat = $coordinatesSplit[1];
 	$lng = $coordinatesSplit[0];
-
-	echo "The address entered was $address.<br />";
-	echo "The latitude is: " . $lat . "<br />";	
-	echo "The longitude is: " . $lng . "<br />";
+	
 }
 return ($status);
 ?>

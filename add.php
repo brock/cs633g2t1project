@@ -41,7 +41,7 @@
 <!-- Uses formvalidate.js for the validate() function -->
 <!-- Uses table.form in CSS to format table for form -->
 <!-- add.php handles form submission -->
-<form id="form1" action="formsubmit.php" method="post" onsubmit="return validate();">
+<form id="form1" action="index.php" method="post" onsubmit="return validate();">
 	<table class="formpage">
 		<caption>Add Point to Map</caption>
 		<tr>

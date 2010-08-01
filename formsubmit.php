@@ -1,20 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Script-Type" content="text/javascript"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!-- Style sheet definition -->
-<link href="default.css" rel="stylesheet" type="text/css" />
-
-<!-- JavaScript -->
-<script type="text/javascript" src="rollover.js">
-</script>
-<title>Submit Point to Cancer Maps</title>
-
-
-</head>
-
-<body>
 <?php
 // for some reason, when I used "require" instead of "include" this wouldn't work.
 include("dbinfo.php");
@@ -49,7 +32,7 @@ if (isset($_POST["submit"])) {
 //firstname Field Validation
 	if($_POST["firstname"] == NULL) {
 		$booFirstname = 1;
-		echo "<p>Please enter your First Name</p>";
+		$message = "Please enter your First Name";
 	}
 	else {
 		$firstname = $_POST["firstname"];
@@ -57,7 +40,7 @@ if (isset($_POST["submit"])) {
 //lastname Field Validation
 	if($_POST["lastname"] == NULL) {
 		$booLastname = 1;
-		echo "<p>Please enter your Last Name</p>";
+		$message = "Please enter your Last Name";
 	}
 	else {
 		$lastname = $_POST["lastname"];
@@ -65,7 +48,7 @@ if (isset($_POST["submit"])) {
 //address Field Validation
 	if($_POST["address"] == NULL) {
 		$booAddress = 1;
-		echo "<p>Please enter your Address</p>";
+		$message = "Please enter your Address";
 	}
 	else {
 		$address = $_POST["address"];
@@ -73,7 +56,7 @@ if (isset($_POST["submit"])) {
 //email Field Validation
 	if($_POST["email"] == NULL) {
 		$booEmail = 1;
-		echo "<p>Please enter your email address</p>";
+		$message = "Please enter your email address";
 	}
 	else {
 		$email = $_POST["email"];
@@ -81,7 +64,7 @@ if (isset($_POST["submit"])) {
 //Month Fields Validation
 	if($_POST["month"] == "select") {
 		$booDiagdate = 1;
-		echo "<p>Please enter your Diagnosis Month</p>";
+		$message = "Please enter your Diagnosis Month";
 	}
 	else {
 		$month = $_POST["month"];
@@ -89,7 +72,7 @@ if (isset($_POST["submit"])) {
 	//Day Fields Validation
 	if($_POST["day"] == "select") {
 		$booDiagdate = 1;
-		echo "<p>Please enter your Diagnosis Day</p>";
+		$message = "Please enter your Diagnosis Day";
 	}
 	else {
 		$day = $_POST["day"];
@@ -97,7 +80,7 @@ if (isset($_POST["submit"])) {
 //Year Fields Validation
 	if($_POST["year"] == "select") {
 		$booDiagdate = 1;
-		echo "<p>Please enter your Diagnosis Year</p>";
+		$message = "Please enter your Diagnosis Year";
 	}
 	else {
 		$year = $_POST["year"];
@@ -108,7 +91,7 @@ if ($month + $day + $year) {
 //Diagnosis Type Validation
 	if($_POST["diagtype"] == "select") {
 		$booDiagtype = 1;
-	echo "<p>Please select your diagnosis type.</p>";
+		$message = "Please select your diagnosis type.";
 	}
 	else {
 		$diagtype = $_POST["diagtype"];
@@ -140,19 +123,19 @@ $result = filter_input_array(INPUT_POST, $filters);
 
 if (!$result["firstname"])
   {
-  echo("First Name is not valid.<br />");
+  $message = "First Name is not valid.";
   }
 elseif(!$result["lastname"])
   {
-  echo("Last Name is not valid.<br />");
+  $message = "Last Name is not valid.";
   }
 elseif(!$result["address"])
   {
-  echo("Address is not valid.<br />");
+  $message = "Address is not valid.";
   }
 elseif(!$result["email"])
   {
-  echo("E-Mail is not valid.<br />");
+  $message = "E-Mail is not valid.";
   }
 else
   {
@@ -196,17 +179,16 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 		//test
 		// if successfully insert data into database, displays message "Successful".
 			if($result1 + $result2 + $result3 + $result4){
-				echo "<br /><br /><b>Thank you for your submission!</b><br />";
-				echo "<a href='index.php'>Back to main page</a>";
+				$db_insertion_status = 1;
 		}
 	// if it didn't successfully submit to the database
 	else {
-		echo "We could not submit your information to the database.";
+		$message = "We could not submit your information to the database.";
 		}
 	}
 	// if the geocoding wasn't successful
 	else {
-		echo "<br />The address you entered did not return a real result.<br />";
+		$message = "The address you entered did not return a real result.";
 	}
 	
 	// //Close connection
@@ -215,7 +197,4 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 	// http://php.net/manual/en/function.mysql-close.php
 	// mysql_close();
 	}
-	?>
-</body>
-</html>
-
+?>
