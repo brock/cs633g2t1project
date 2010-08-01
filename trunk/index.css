@@ -1,11 +1,13 @@
 ﻿
-table {font-family:arial; text-align: left; width: 50%; border: 3px black solid;border-collapse: collapse; margin-left: auto;
-margin-right: auto; background-color:#EBDDE2;}
-table.form {font-family:arial; text-align: left; width: 30%; border: 3px black solid;border-collapse: collapse; margin-left: auto;
+table {font-family:arial; text-align: left; width: 100%; border-collapse: collapse; margin-left: auto;
+margin-right: auto;}
+table.form {font-family:arial; text-align: left; width: 30%; border: 1px gray solid;border-collapse: collapse; margin-left: auto;
 margin-right: auto; }
-caption {font-weight: bold; font-size: 20px; color:white; background-color: black ;border: 3px black solid}
-th {border: black solid; text-align: center}
-td {border: black solid}
+caption {font-weight: bold; font-size: 20px; color:white; background-color: gray ;border: 1px gray solid}
+th {border: gray solid; text-align: center}
+td {border: gray solid}
+div#message {width: 500px; vertical-align: middle; background-color: rgb(255, 251, 204); border-color:#FBB117; border-style:solid; border-width:2px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+div#head a{font-family:Helvetica, Verdana, Arial, sans-serif; text-decoration: none; color: #000;}
 
 /* this is a test to see SVN differentials */
 /* this is the test from the live wiggio session */
