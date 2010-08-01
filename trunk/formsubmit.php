@@ -70,30 +70,6 @@ if (isset($_POST["submit"])) {
 	else {
 		$address = $_POST["address"];
 	}
-//city Field Validation
-	if($_POST["city"] == NULL) {
-		$booCity = 1;
-		echo "<p>Please enter your City</p>";
-	}
-	else {
-		$city = $_POST["city"];
-	}
-//state Field Validation
-	if($_POST["state"] == "select") {
-		$booState = 1;
-		echo "<p>Please enter your State</p>";
-	}	
-	else {
-		$state = $_POST["state"];
-	}
-//zip Field Validation
-	if($_POST["zip"] == NULL) {
-		$booZip = 1;
-		echo "<p>Please enter your Zip Code</p>";
-	}
-	else {
-		$zip = $_POST["zip"];
-	}
 //email Field Validation
 	if($_POST["email"] == NULL) {
 		$booEmail = 1;
@@ -156,16 +132,6 @@ $filters = array
 	  "address"=> array
 	  (
 	  "filter"=>FILTER_SANITIZE_STRING
-	  ),
-	  "city"=> array
-	  (
-	  "filter"=>FILTER_SANITIZE_STRING
-	  ),
-	  "zip" => array
-	  (
-	  // thanks : http://www.toves.org/books/php/ch12-regex/
-	  "filter"=>FILTER_VALIDATE_REGEXP,
-	  "options"=>array("regexp"=>"/^[0-9]{5}$/"),
 	  )
   );
 $result = filter_input_array(INPUT_POST, $filters);
@@ -183,14 +149,6 @@ elseif(!$result["lastname"])
 elseif(!$result["address"])
   {
   echo("Address is not valid.<br />");
-  }
-elseif(!$result["city"])
-  {
-  echo("is not valid.<br />");
-  }
-elseif(!$result["zip"])
-  {
-  echo("Zip code is not valid.<br />");
   }
 elseif(!$result["email"])
   {
@@ -217,7 +175,7 @@ if (!($booFirstname + $booLastname + $booEmail + $booAddress+ $booCity + $booSta
 		mysql_select_db($db_name)or die("cannot select DB");
 
 		//Insert data into Address Table
-		$sql2="INSERT INTO $tbl_name2(lat, lng, street1, city, state, zip)VALUES('$lat', '$lng', '$address', '$city', '$state', '$zip')";
+		$sql2="INSERT INTO $tbl_name2(lat, lng, street1)VALUES('$lat', '$lng', '$address')";
 		$result2=mysql_query($sql2);
 		$lastitemid1 = mysql_insert_id();
 		

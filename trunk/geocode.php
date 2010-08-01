@@ -9,9 +9,8 @@ $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 
 //my address
 // $address = "8730 Costa Verde Blvd San Diego, CA";
-$fullAddress = $address." ".$city.", ".$state." ".$zip;
 
-$request_url = $base_url . "&q=" . urlencode($fullAddress);
+$request_url = $base_url . "&q=" . urlencode($address);
 
 //xml request
 $xml = simplexml_load_file($request_url) or die("url not loading");
@@ -30,7 +29,7 @@ if (strcmp($status, "200") == 0) {
 	$lat = $coordinatesSplit[1];
 	$lng = $coordinatesSplit[0];
 
-	echo "The full address is $fullAddress.<br />";
+	echo "The address entered was $address.<br />";
 	echo "The latitude is: " . $lat . "<br />";	
 	echo "The longitude is: " . $lng . "<br />";
 }
